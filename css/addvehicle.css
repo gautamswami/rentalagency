@@ -122,3 +122,11 @@ opacity: 0;
     opacity: 1;
   }
 }
+@media screen and (max-width:767px) {
+  input{padding: 10px;
+  border-radius: 4px;
+  margin: 1%;
+  border: 2px solid #597494;
+  background: #1b35bc17;
+}
+}

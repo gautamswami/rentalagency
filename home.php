@@ -7,7 +7,7 @@ $sql = "SELECT * FROM vehicles";
 $result = mysqli_query($conn, $sql);
 $err = "";
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['owner_mail']) && !empty($_POST['days']) && !empty($_POST['date'])) {
   if (isset($_SESSION['user_type'])) {
     if ($_SESSION['user_type'] == 'user') {
       $carid = $_POST['submit'];
@@ -29,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } else {
     header('Location:login.php');
   }
+}
+else{
+  $err = "Please select date and days";
 }
 ?>
 <!DOCTYPE html>

@@ -9,25 +9,30 @@ if (isset($_POST['submit'])) {
   $email = mysqli_real_escape_string($conn, $_POST['email']);
   $pass = $_POST['password'];
   $user_type = "user";
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) && empty($name) && empty($phone) && empty($pass)) {
+    $error[] = 'Invalid input!';
+  }
+  else{
 
-  $select = " SELECT * FROM users WHERE email = '$email' ";
-
-  $result = mysqli_query($conn, $select);
-
-  if ($result && mysqli_num_rows($result) > 0) {
-
-    $error[] = 'USER ALREADY EXIST!';
-
-  } else {
-    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
-     
-    $insert = "INSERT INTO users (name, email, password, user_type) VALUES('$name','$email','$hashed_password','$user_type')";
-    mysqli_query($conn, $insert);
-    header('location:home.php');
-    $_SESSION['user_email'] = $email;
-    $_SESSION['user_type'] = $user_type;
+    $select = " SELECT * FROM users WHERE email = '$email' ";
   
-
+    $result = mysqli_query($conn, $select);
+  
+    if ($result && mysqli_num_rows($result) > 0) {
+  
+      $error[] = 'USER ALREADY EXIST!';
+  
+    } else {
+      $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+       
+      $insert = "INSERT INTO users (name, email, password, user_type) VALUES('$name','$email','$hashed_password','$user_type')";
+      mysqli_query($conn, $insert);
+      header('location:home.php');
+      $_SESSION['user_email'] = $email;
+      $_SESSION['user_type'] = $user_type;
+    
+  
+    }
   }
 
 }

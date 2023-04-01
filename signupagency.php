@@ -10,8 +10,10 @@ if (isset($_POST['submit'])) {
   $phone = mysqli_real_escape_string($conn, $_POST['phone']);
   $pass = $_POST['password'];
   $user_type = "agency";
-
-
+   if (!filter_var($email, FILTER_VALIDATE_EMAIL) && empty($name) && empty($phone) && empty($pass)) {
+    $error[] = 'Invalid input!';
+  }
+  else{
   $select = " SELECT * FROM users WHERE email = '$email' ";
 
   $result = mysqli_query($conn, $select);
@@ -29,7 +31,7 @@ if (isset($_POST['submit'])) {
     $_SESSION['user_email'] = $email;
     $_SESSION['user_type'] = $user_type;
   }
-
+  }
 }
 ;
 
@@ -63,7 +65,7 @@ if (isset($_POST['submit'])) {
       <?php
       if (isset($error)) {
         foreach ($error as $error) {
-          echo '<span class="error-msg">' . $error . '</span>';
+          echo '<span class="error_msg">' . $error . '</span>';
         }
         ;
       }

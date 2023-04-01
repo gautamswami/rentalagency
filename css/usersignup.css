@@ -101,3 +101,39 @@ input {
     transform: translateX(320px);
   }
 }
+@media screen and (max-width: 1200px) {
+  @keyframes car {
+    100% {
+      transform: translateX(140px);
+    }
+  }
+}
+@media screen and (max-width: 900px) {
+  @keyframes car {
+    100% {
+      transform: translateX(60px);
+    }
+  }
+  .animation_box img {
+    width: 12rem;
+  }
+  .logincontainer {
+    width: 35%;
+  }
+  .login_heading {
+    font-size: 35px;
+  }
+}
+@media screen and (max-width: 600px) {
+
+.login_heading{
+  display: none;
+}
+.logincontainer {
+  width: 80%;
+}
+.animation_box {
+  position: absolute;
+  bottom: 0vh;
+}
+}

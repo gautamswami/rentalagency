@@ -22,29 +22,25 @@
 
 .logincontainer {
   width: 240px;
-  height: 290px;
   margin: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background: #fff;
   box-sizing: border-box;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-self: center;
   padding: 1%;
-    gap: 3%;
+    gap: 12px;
 }
 .days_form {
   display: flex;
   flex-direction: column;
   place-content: center;
-  align-items: center;  
   gap:10px;
   width: 100%;
 }
 .login_button , select {
-  margin: 0 auto;
   padding: 4%;
   border-radius: 6px;
   border: none;
@@ -83,4 +79,8 @@ opacity: 0;
   100% {
     opacity: 1;
   }
+}
+
+@media screen and (max-width:767px) {
+  
 }

@@ -1,7 +1,7 @@
  
 <link rel="stylesheet" href="./css/header.css">
 <div class='header flex_center'>
-      <h1><a href='home.php'>CARRENT</a></h1>
+      <h1 class="logoheading"><a  href='home.php'>CARRENT</a></h1>
       <ul class='flex_center header_list'>
         <?php
         if ($_SESSION) {

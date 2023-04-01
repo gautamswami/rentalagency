@@ -15,7 +15,7 @@ else if ($_SESSION['user_type'] !== 'agency') {
 }
 
 // // Check if form has been submitted
-$err='';
+$err = '';
 if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_POST['number']) && !empty($_POST['seat']) && !empty($_POST['rent'])) {
   // Get form data
   $model = $_POST['model'];
@@ -23,34 +23,40 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
   $seat = $_POST['seat'];
   $rent = $_POST['rent'];
   $id = $_POST['submit'];
-  $sql = "SELECT * FROM vehicles WHERE vehicle_model = '$model' AND vehicle_number = '$number' AND vehicle_seats = '$seat' AND vehicle_rent = '$rent'";
-  $getvehicle = $conn->query($sql);
-  $model = mysqli_real_escape_string($conn, $model);
-  $number = mysqli_real_escape_string($conn, $number);
-  $seat = mysqli_real_escape_string($conn, $seat);
-  $rent = mysqli_real_escape_string($conn, $rent);
-  $id = mysqli_real_escape_string($conn, $id);
-  if ($getvehicle->num_rows > 0) {
-    $err  = "Vehicle already added";
-  } else {
-    if ($id == "") {
-      $insert = "INSERT INTO vehicles (vehicle_model, vehicle_number	, vehicle_seats, vehicle_rent ,owner_email) VALUES ('$model','$number','$seat','$rent','$email')";
+  
+    $sql = "SELECT * FROM vehicles WHERE vehicle_model = '$model' AND vehicle_number = '$number' AND vehicle_seats = '$seat' AND vehicle_rent = '$rent'";
+    $getvehicle = $conn->query($sql);
+    $model = mysqli_real_escape_string($conn, $model);
+    $number = mysqli_real_escape_string($conn, $number);
+    $seat = mysqli_real_escape_string($conn, $seat);
+    $rent = mysqli_real_escape_string($conn, $rent);
+    $id = mysqli_real_escape_string($conn, $id);
+    if ($getvehicle->num_rows > 0) {
+      $err = "Vehicle already added";
     } else {
-      $insert = "UPDATE vehicles
-      SET vehicle_model = '$model', vehicle_number = '$number', vehicle_seats = '$seat', vehicle_rent ='$rent'
-      WHERE id = $id";
-    }
- 
-    if ($conn->query($insert) === false) {
-      echo "Error: " . $conn->error;
-    } else {
-      $err  = "ADDED";
-      echo "<meta http-equiv='refresh' content='0'>";
-    }
-  }
-  // close database connection
-  $conn->close();
+      if ($id == "") {
+        $insert = "INSERT INTO vehicles (vehicle_model, vehicle_number	, vehicle_seats, vehicle_rent ,owner_email) VALUES ('$model','$number','$seat','$rent','$email')";
+      } else {
+        $insert = "UPDATE vehicles
+        SET vehicle_model = '$model', vehicle_number = '$number', vehicle_seats = '$seat', vehicle_rent ='$rent'
+        WHERE id = $id";
+      }
 
+      if ($conn->query($insert) === false) {
+        echo "Error: " . $conn->error;
+      } else {
+        $err = "ADDED";
+        echo "<meta http-equiv='refresh' content='0'>";
+      }
+    }
+    // close database connection
+    $conn->close();
+  
+
+
+}
+else{
+  $err = 'Invalid input';
 }
 ?>
 <!DOCTYPE html>
@@ -69,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
   <div class='container'>
     <?php
     include('header.php');
-    if($err){
-    echo "<div class='toast'>
+    if ($err) {
+      echo "<div class='toast'>
     $err
 </div> ";
-}
+    }
     ?>
 
     <div class='form_container'>
@@ -84,9 +90,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
         <input id='number' placeholder='Enter vehicle number' name='number' />
         <input id='seat' placeholder='Enter seating capacity' type='number' name='seat' />
         <div class="rent_div">
-        <input id='rent' placeholder='Enter rent per day' type='number' name='rent' />
-        <span class='currency_span'>$ per day</span></div>
-        <button class='login_button' id='add_button' value="" name='submit'  type='submit'>+ ADD</button>
+          <input id='rent' placeholder='Enter rent per day' type='number' name='rent' />
+          <span class='currency_span'>$ per day</span>
+        </div>
+        <button class='login_button' id='add_button' value="" name='submit' type='submit'>+ ADD</button>
       </form>
       <button id='cancel_button' onclick='editVehicle({"action":"cancel"})'>CANCEL</button>
     </div>
