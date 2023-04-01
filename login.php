@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php
       if (isset($error)) {
         foreach ($error as $error) {
-          echo '<span class="error-msg">' . $error . '</span>';
+          echo '<span class="error_msg">' . $error . '</span>';
         }
         ;
       }

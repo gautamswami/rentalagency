@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CARS FOR RENT</title>
-  <link rel="stylesheet" href="./css/carlisting.css">
+  <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
@@ -48,6 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     include('header.php');
 
     ?>
+    <div>
+      TOAST
+</div>
     <div class='card_container'>
       <?php
       if ($result && mysqli_num_rows($result) > 0) {
@@ -82,7 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       </div>";
         }
       } else {
-        echo "NO CARS AVAILABLE";
+        echo "<div class='noquery_div'>
+        NO CARS AVAILABLE FOR RENT CURRENTLY
+        <br/>
+        </div>";
       }
       ?>
 

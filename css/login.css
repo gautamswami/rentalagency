@@ -99,7 +99,9 @@ input {
   justify-content: space-around;
   gap: 1%;
 }
-
+.error_msg{
+  color: red;
+}
 .animation_box {
   position: absolute;
   bottom: 8vh;

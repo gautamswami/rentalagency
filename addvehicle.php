@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
     if ($conn->query($insert) === false) {
       echo "Error: " . $conn->error;
     } else {
-      echo "Data saved successfully";
+      echo "<meta http-equiv='refresh' content='0'>";
     }
   }
   // close database connection
@@ -79,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
         <div class="rent_div">
         <input id='rent' placeholder='Enter rent per day' type='number' name='rent' />
         <span class='currency_span'>$ per day</span></div>
-        <button class='login_button' id='add_button' value="" name='submit' type='submit'>+ ADD</button>
+        <button class='login_button' id='add_button' value="" name='submit'  type='submit'>+ ADD</button>
       </form>
       <button id='cancel_button' onclick='editVehicle({"action":"cancel"})'>CANCEL</button>
     </div>
@@ -98,7 +98,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
           </div>";
         }
       } else {
-        echo "NO RESULT";
+        echo "<div class='noquery_div'>
+        ADD SOME VEHICLES
+        <br/>
+        </div>";
       }
       ?>
     </div>

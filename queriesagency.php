@@ -29,15 +29,12 @@ $result = mysqli_query($conn, $sql);
         <?php
         include('header.php');
 
-        ?>
+        
 
-        <?php
-        if ($result && mysqli_num_rows($result) > 0) {
-            // output data of each row
-            while ($row = $result->fetch_assoc()) {
-                echo "<table>
+if ($result && mysqli_num_rows($result) > 0) {
+      echo"  <table>
             <thead>
-    
+
                 <tr>
                     <th>Booking id</th>
                     <th>Car model</th>
@@ -46,7 +43,13 @@ $result = mysqli_query($conn, $sql);
                     <th>Start Date</th>
                     <th>Sender mail</th>
                 </tr>
-            </thead>
+            </thead>";
+}
+?>
+            <?php
+            if ($result && mysqli_num_rows($result) > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "
             <tbody>
                 <tr>
                     <td>
@@ -72,13 +75,19 @@ $result = mysqli_query($conn, $sql);
                 </tr>
     
             </tbody>
-        </table>
-    ";
+            ";
+                }
+            } else {
+                echo "
+                <div class='noquery_div'>
+                NO VEHICLE QUERIES
+                <br/>
+                <button class='add_button'> <a href='addvehicle.php'>ADD MORE VEHICLES</a></button>
+                </div>
+                ";
             }
-        } else {
-            echo "NO VEHICLE QUERIES";
-        }
-        ?>
+            ?>
+        </table>
     </div>
 </body>
 
