@@ -76,6 +76,9 @@ input {
   text-decoration: none;
   color: #7c9dcd;
 }
+.error_msg{
+  color: red;
+}
 .flex {
   display: flex;
   align-items: center;

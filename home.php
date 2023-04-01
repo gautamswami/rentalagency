@@ -5,6 +5,8 @@ $vehicledata = array();
 // get data of vehicles
 $sql = "SELECT * FROM vehicles";
 $result = mysqli_query($conn, $sql);
+$err = "";
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
   if (isset($_SESSION['user_type'])) {
     if ($_SESSION['user_type'] == 'user') {
@@ -19,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       if ($conn->query($insert) === false) {
         echo "Error: " . $conn->error;
       } else {
-        echo "QUERY SENT";
+        $err = "QUERY SENT";
       }
     } else if ($_SESSION['user_type']) {
-      echo "YOU ARE AGENCY";
+      $err = "YOU ARE AGENCY";
     }
   } else {
     header('Location:login.php');
@@ -46,11 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   <div class='container'>
     <?php
     include('header.php');
-
+if($err){
+    echo "<div class='toast'>
+    $err
+</div> ";}
     ?>
-    <div>
-      TOAST
-</div>
     <div class='card_container'>
       <?php
       if ($result && mysqli_num_rows($result) > 0) {

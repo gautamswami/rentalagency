@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
 
   if ($result && mysqli_num_rows($result) > 0) {
 
-    $error[] = 'user already exist!';
+    $error[] = 'USER ALREADY EXIST!';
 
   } else {
     $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
       <?php
       if (isset($error)) {
         foreach ($error as $error) {
-          echo '<span class="error-msg">' . $error . '</span>';
+          echo '<span class="error_msg">' . $error . '</span>';
         }
         ;
       }

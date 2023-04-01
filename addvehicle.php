@@ -15,6 +15,7 @@ else if ($_SESSION['user_type'] !== 'agency') {
 }
 
 // // Check if form has been submitted
+$err='';
 if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_POST['number']) && !empty($_POST['seat']) && !empty($_POST['rent'])) {
   // Get form data
   $model = $_POST['model'];
@@ -30,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
   $rent = mysqli_real_escape_string($conn, $rent);
   $id = mysqli_real_escape_string($conn, $id);
   if ($getvehicle->num_rows > 0) {
-    echo "Vehicle already added";
+    $err  = "Vehicle already added";
   } else {
     if ($id == "") {
       $insert = "INSERT INTO vehicles (vehicle_model, vehicle_number	, vehicle_seats, vehicle_rent ,owner_email) VALUES ('$model','$number','$seat','$rent','$email')";
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
     if ($conn->query($insert) === false) {
       echo "Error: " . $conn->error;
     } else {
+      $err  = "ADDED";
       echo "<meta http-equiv='refresh' content='0'>";
     }
   }
@@ -67,6 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_POST['model']) && !empty($_
   <div class='container'>
     <?php
     include('header.php');
+    if($err){
+    echo "<div class='toast'>
+    $err
+</div> ";
+}
     ?>
 
     <div class='form_container'>
