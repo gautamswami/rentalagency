@@ -1,0 +1,127 @@
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container{
+
+  background: linear-gradient(31deg, #d8e6ed, #a8bdff);
+  height: 100vh;
+}
+.box {
+  display: flex;
+  place-content: center;
+  align-items: center;
+  gap: 8%;
+  position: absolute;
+    top: 2%;
+    width: 88%;
+    left: 50%;
+    box-shadow: 0 0 9px #a2a2a236;
+    border-radius: 40px;
+    background: #f6f6f652;
+    padding: 1%;
+    height: 90%;
+    transform: translateX(-50%);
+}
+.login_heading {
+  text-align: center;
+  width: 35%;
+  font-weight: 700;
+  font-size: 55px;
+}
+.logincontainer {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  border-radius: 20px;
+  gap: 1rem;
+  width: 25%;
+  box-shadow: 0 0 18px #9399b75e;
+}
+input {
+  padding: 5%;
+  border-radius: 20px;
+  border: none;
+  background: #d8e6ed;
+  color: black;
+  outline: none;
+  width: 90%;
+}
+.passworddiv {
+  position: relative;
+}
+#passwordtoggle {
+  cursor: pointer;
+  position: absolute;
+  top: 32%;
+  color: #76bedf;
+  right: 3rem;
+}
+.login_button {
+  width: 50%;
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 3%;
+  border-radius: 20px;
+  border: none;
+  background: #7c9dcd;
+  color: white;
+  font-weight: 700;
+  outline: none;
+}
+.newuser_div {
+  margin-top: 8%;
+  text-align: center;
+}
+.loginform {
+  width: 100%;
+}
+.newuser_div p,
+.newuser_div a {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.newuser_div hr {
+  width: 40%;
+  height: 0;
+}
+.linktext {
+  text-decoration: none;
+  color: #7c9dcd;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1%;
+}
+
+.animation_box {
+  position: absolute;
+  bottom: 8vh;
+  animation: car;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.animation_box img {
+  width: 18rem;
+}
+@keyframes car {
+  100% {
+    transform: translateX(320px);
+  }
+}
+
+
+@media screen and (max-width : 1200px) {
+  @keyframes car {
+    100% {
+      transform: translateX(140px);
+    }
+  }
+}

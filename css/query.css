@@ -1,0 +1,11 @@
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    background: #d8e6ed;
+    min-height: 100vh;
+    padding: 2%;
+  }

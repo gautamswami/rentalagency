@@ -1,0 +1,26 @@
+.flex_center{
+    display:flex;
+  align-items:center;
+}
+.header ul{
+  list-style:none;
+}
+.header{
+    justify-content: space-between;
+    padding: 2rem;
+    background: #6eb4e830;
+    border-radius: 14px;
+    box-shadow: 0 0 9px #b7a9cb;
+}
+.header_list{
+    gap:3rem;   
+    justify-content: space-around;
+}
+.header_list li{
+  cursor:pointer;
+}
+ a{
+text-decoration: none;  
+color: #1f3d77;
+font-weight: 600;
+}

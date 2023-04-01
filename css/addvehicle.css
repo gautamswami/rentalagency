@@ -1,0 +1,93 @@
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background: #d8e6ed;
+  min-height: 100vh;
+  padding: 2%;
+}
+.card_container {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+ 
+.login_button {
+  width: 150px;
+  font-size: 18px;
+  padding: 1%;
+  margin: 1%;
+  border-radius: 6px;
+  border: none;
+  background: #7c9dcd;
+  color: white;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+#cancel_button{
+  display: none;
+  width: 150px;
+
+  font-size: 18px;
+  padding: 1%;
+  border-radius: 6px;
+  border: none;
+  background: #7c9dcd;
+  color: white;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+.vehicle_form {
+  display: flex;
+  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+input {
+  padding: 10px;
+  border-radius: 4px;
+  margin: 1%;
+  border: 2px solid #597494;
+  background: #1b35bc17;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.form_container {
+  padding: 2%;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+}
+.logincontainer {
+  width: 240px;
+  height: 190px;
+  margin: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-self: center;
+  padding: 1%;
+    gap: 3%;
+}
+
+.rent_div{
+position: relative;
+}
+.currency_span{
+position: absolute;
+right: 1%;
+top:32%;
+font-size: 12px;
+}
